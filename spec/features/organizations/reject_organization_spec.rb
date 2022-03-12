@@ -10,7 +10,6 @@ RSpec.describe 'Rejecting an organization', type: :feature do
 
   it "allows an admin to reject a pending organization" do
     create(:organization)
-    visit dashboard_path
     click_on 'Organizations'
     click_on 'Pending'
     click_on 'Review'
