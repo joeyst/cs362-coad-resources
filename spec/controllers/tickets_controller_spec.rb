@@ -19,9 +19,17 @@ RSpec.describe TicketsController, type: :controller do
 
   end
 
-  describe "a logged-in user" do
+  describe "a logged-in user with an organization" do
 
+    let(:user) { create(:user) }
+    let(:organization) { create(:organization) }
 
+    before do
+      user.organization = organization
+      user.confirm
+      sign_in(user)
+      user.organization.approve
+    end
 
     it "redirects to dashboard_path" do
       delete :destroy, params: {id: 'FAKE'}
