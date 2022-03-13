@@ -19,4 +19,16 @@ RSpec.describe 'Logging in', type: :feature do
 
     expect(page).to have_content('Signed in successfully.')
   end
+
+  it "does not allow a guest to log in with invalid credentials" do
+    visit login_path
+
+    fill_in('user_email', :with => 'invalid')
+    fill_in('user_password', :with => 'alsoinvalid')
+    check('user_remember_me')
+
+    click_on('Sign in')
+    save_and_open_page
+    expect(page).to have_content('Invalid Email or password.')
+  end
 end
