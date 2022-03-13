@@ -28,7 +28,6 @@ RSpec.describe 'Logging in', type: :feature do
     check('user_remember_me')
 
     click_on('Sign in')
-    save_and_open_page
     expect(page).to have_content('Invalid Email or password.')
   end
 end
