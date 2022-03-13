@@ -16,5 +16,10 @@ RSpec.describe DashboardHelper, type: :helper do
       admin = create(:user, :admin)
       expect(dashboard_for(admin)).to eql('admin_dashboard')
     end
+
+    it "returns organization_submitted_dashboard if user has an organization of submitted status" do
+      user = create(:user_with_organization)
+      expect(dashboard_for(user)).to eql('organization_submitted_dashboard')
+    end
   end
 end
