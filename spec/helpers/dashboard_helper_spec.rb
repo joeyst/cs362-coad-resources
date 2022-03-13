@@ -27,5 +27,10 @@ RSpec.describe DashboardHelper, type: :helper do
       user.organization.approve
       expect(dashboard_for(user)).to eql('organization_approved_dashboard')
     end
+
+    it "returns create_application_dashboard if user doesn't have a submitted or approved organization" do
+      user = create(:user)
+      expect(dashboard_for(user)).to eql('create_application_dashboard')
+    end
   end
 end
