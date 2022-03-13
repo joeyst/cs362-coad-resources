@@ -11,5 +11,7 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe DashboardHelper, type: :helper do
-
+  describe 'dashboard_for(user)' do
+    
+  end
 end
