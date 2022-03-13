@@ -13,11 +13,15 @@ RSpec.describe TicketsController, type: :controller do
       expect(response).to redirect_to(dashboard_path)
       post :release, params: {id: 'FAKE'}
       expect(response).to redirect_to(dashboard_path)
+      post :destroy, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
     end
 
   end
 
   describe "a logged-in user" do
+
+
 
     it "redirects to dashboard_path" do
       delete :destroy, params: {id: 'FAKE'}
