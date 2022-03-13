@@ -11,5 +11,10 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe TicketsHelper, type: :helper do
-
+  describe "format_phone_number" do
+    it "reformats phone number with use prefix" do
+      phone_number = '+5555555555'
+      expect(format_phone_number(phone_number)).to eql('+15555555555')
+    end
+  end
 end
