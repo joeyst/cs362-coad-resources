@@ -1,3 +1,5 @@
+# Ticket represents the help requests that are put in. 
+
 class Ticket < ApplicationRecord
 
   belongs_to :region
