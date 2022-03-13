@@ -4,7 +4,7 @@ FactoryBot.define do
     password { 'password' }
     
     factory :admin do
-      role { admin }
+      role { :admin }
     end
 
     factory :user_with_organization do
