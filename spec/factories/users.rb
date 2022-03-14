@@ -5,6 +5,7 @@ FactoryBot.define do
     
     factory :admin do
       role { :admin }
+      email { 'admin@test.com' }
     end
 
     factory :user_with_organization do
