@@ -1,3 +1,5 @@
+# Region represents the different locations that the help request can be made in. 
+
 class Region < ApplicationRecord
 
   has_many :tickets
