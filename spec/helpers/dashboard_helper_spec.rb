@@ -18,18 +18,20 @@ RSpec.describe DashboardHelper, type: :helper do
     end
 
     it "returns organization_submitted_dashboard if user has an organization of submitted status" do
-      user = create(:user_with_organization)
+      organization = double(submitted?: true)
+      user = double(admin?: false, organization: organization)
       expect(dashboard_for(user)).to eql('organization_submitted_dashboard')
     end
 
     it "returns organization_approved_dashboard if user has an approved organization" do
-      user = create(:user_with_organization)
-      user.organization.approve
+      organization = double(submitted?: false, approved?: true)
+      user = double(admin?: false, organization: organization)
       expect(dashboard_for(user)).to eql('organization_approved_dashboard')
     end
 
     it "returns create_application_dashboard if user doesn't have a submitted or approved organization" do
-      user = create(:user)
+      organization = double(submitted?: false, approved?: false)
+      user = double(admin?: false, organization: organization)
       expect(dashboard_for(user)).to eql('create_application_dashboard')
     end
   end
