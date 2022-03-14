@@ -13,7 +13,7 @@ require 'rails_helper'
 RSpec.describe DashboardHelper, type: :helper do
   describe 'dashboard_for(user)' do
     it "returns admin_dashboard if user is an admin" do
-      admin = create(:user, :admin)
+      admin = double(admin?: true)
       expect(dashboard_for(admin)).to eql('admin_dashboard')
     end
 
