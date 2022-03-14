@@ -11,5 +11,26 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe DashboardHelper, type: :helper do
+  describe 'dashboard_for(user)' do
+    it "returns admin_dashboard if user is an admin" do
+      admin = create(:user, :admin)
+      expect(dashboard_for(admin)).to eql('admin_dashboard')
+    end
 
+    it "returns organization_submitted_dashboard if user has an organization of submitted status" do
+      user = create(:user_with_organization)
+      expect(dashboard_for(user)).to eql('organization_submitted_dashboard')
+    end
+
+    it "returns organization_approved_dashboard if user has an approved organization" do
+      user = create(:user_with_organization)
+      user.organization.approve
+      expect(dashboard_for(user)).to eql('organization_approved_dashboard')
+    end
+
+    it "returns create_application_dashboard if user doesn't have a submitted or approved organization" do
+      user = create(:user)
+      expect(dashboard_for(user)).to eql('create_application_dashboard')
+    end
+  end
 end
